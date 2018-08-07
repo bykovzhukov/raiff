@@ -14,6 +14,7 @@ module.exports = (env, options) => {
     devServer: {
       contentBase: path.join(__dirname, 'public'),
       compress: true,
+      // hot: true,
       port: 3000
     },
     entry: './src/index.js',
@@ -40,8 +41,14 @@ module.exports = (env, options) => {
       ]
     },
     plugins: inProd
-      ? [ new MiniCssExtractPlugin({ filename: 'all.css' }) ]
-      : [ new webpack.HotModuleReplacementPlugin() ],
+      ? [
+          new MiniCssExtractPlugin({ filename: 'all.css' }),
+          new webpack.DefinePlugin({ IS_PRODUCTION: JSON.stringify(inProd) })
+        ]
+      : [
+          new webpack.HotModuleReplacementPlugin(),
+          new webpack.DefinePlugin({ IS_PRODUCTION: JSON.stringify(inProd) })
+        ],
     module: {
       rules: [{
         test: /\.js$/,

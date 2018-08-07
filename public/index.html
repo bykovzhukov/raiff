@@ -18,8 +18,11 @@
 
 <body>
 
-    <!-- Если спецпроект интегрирован в статью, используется такая конструкция -->
-    <div id="specialContainer"></div>
+    <div id="raiff-wrapper" class="Raiff-wrapper">
+        <div class="l-wide_container Raiff-container">
+            <div id="raiff" class="Raiff"></div>
+        </div>
+    </div>
 
     <script>
         (function(d, ver) {
@@ -27,19 +30,21 @@
             s.src = './all.js?' + ver;
             s.async = true;
 
-            var container = d.getElementById('specialContainer');
+            var container = d.getElementById('raiff');
 
-            s.onload = function() {
-                var special = new Special.Special({
-                    // css: './all.css?' + ver,
-                    container: container,
-                    share: {
-                        url: 'https://vc.ru/special/url',
-                        twitter: 'Optional title for Twitter',
-                        title: 'Optional title for VK'
-                    }
-                });
-            };
+            if (container) {
+                s.onload = function() {
+                    var special = new Raiff.Special({
+                        // css: './all.css?' + ver,
+                        container: container,
+                        share: {
+                            url: 'https://vc.ru/special/url',
+                            twitter: 'Optional title for Twitter',
+                            title: 'Optional title for VK'
+                        }
+                    });
+                };
+            }
             d.body.appendChild(s);
         })(document, 0);
     </script>
