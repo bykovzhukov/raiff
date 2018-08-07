@@ -7,12 +7,14 @@ import * as Share from './lib/share';
 import * as Analytics from './lib/analytics';
 import { makeElement, removeChildren } from './lib/dom';
 import { shuffle } from './lib/array';
+import loadImage from './lib/loadImage';
 
 const CSS = {
     main: 'Raiff',
 };
 
 const EL = {};
+const IMAGES = {};
 
 class Special extends BaseSpecial {
     constructor(params = {}) {
@@ -162,17 +164,38 @@ class Special extends BaseSpecial {
         EL.result.appendChild(EL.rBottom);
     }
 
+    storeImage(index, question) {
+        if (IMAGES[index]) {
+            return IMAGES[index];
+        }
+
+        let img = document.createElement('img');
+        img.src = question.img;
+        img.srcset = question.img2x;
+
+        return IMAGES[index] = img;
+    }
+
     makeNextQuestion() {
         let question = Data.questions[this.activeIndex];
 
         question.isHiddenLogo ? EL.qCardLogo.style.display = 'none' : EL.qCardLogo.style.display = 'block';
         question.isLoupe ? EL.qCardLoupe.style.display = 'block' : EL.qCardLoupe.style.display = 'none';
+
+        this.storeImage(this.activeIndex, question);
         EL.qCardImg.src = question.img;
         EL.qCardImg.srcset = question.img2x + ' 2x';
         EL.qCardHolder.textContent = '';
 
         question.isDark ? EL.qCard.classList.add('is-dark') : EL.qCard.classList.remove('is-dark');
         this.makeOptions(question.options);
+
+        EL.qCard.style.opacity = 0;
+        EL.qCard.style.transition = 'opacity 0s 0s';
+        loadImage(EL.qCardImg, () => {
+            EL.qCard.style.opacity = 1;
+            EL.qCard.style.transition = 'opacity .4s .2s';
+        });
     }
 
     makeOptions(options) {
