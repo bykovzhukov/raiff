@@ -264,6 +264,7 @@ class Special extends BaseSpecial {
     }
 
     restart() {
+        EL.wrapper.classList.add(CSS.main + '-wrapper--answer');
         removeChildren(this.container);
         this.container.appendChild(EL.question);
         EL.question.classList.remove(CSS.main + '-question--answer');
@@ -286,14 +287,6 @@ class Special extends BaseSpecial {
         this.createEnter();
 
         EL.wrapper = document.getElementById('raiff-wrapper');
-        /** Демонстрация */
-        // this.container.classList.add(CSS.main);
-        // this.container.textContent = Data.title;
-        // this.container.innerHTML += Svg.demo;
-        // this.container.appendChild(this.demoButton());
-        // this.container.appendChild(this.demoInput());
-
-        // Share.make(this.container, this.params.share);
     }
 }
 
