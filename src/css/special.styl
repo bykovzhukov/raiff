@@ -60,7 +60,10 @@
         
         @media $mq.not_mobile
             min-height 600px
-            padding 155px 60px 0
+            padding 100px 60px 0
+        
+        @media $mq.desktop
+            padding-top 155px
         
         &__logo
             position absolute
@@ -75,10 +78,14 @@
             
             @media $mq.not_mobile
                 position absolute
+                bottom 0
+                right -25px
+                margin-top 0
+            
+            @media $mq.desktop
                 top 173px
                 bottom auto
                 right 44px
-                margin-top 0
 
         &__title
             position relative
