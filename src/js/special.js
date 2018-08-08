@@ -191,10 +191,10 @@ class Special extends BaseSpecial {
         this.makeOptions(question.options);
 
         EL.qCard.style.opacity = 0;
-        EL.qCard.style.transition = 'opacity 0s 0s';
+        EL.qCard.style.transition = 'opacity 0s';
         loadImage(EL.qCardImg, () => {
             EL.qCard.style.opacity = 1;
-            EL.qCard.style.transition = 'opacity .4s .2s';
+            EL.qCard.style.transition = 'opacity .4s';
         });
     }
 
