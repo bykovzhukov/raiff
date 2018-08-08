@@ -59,9 +59,9 @@ class Special extends BaseSpecial {
         });
 
         EL.enter.appendChild(EL.eLogo);
-        EL.enter.appendChild(EL.eImg);
         EL.enter.appendChild(EL.eTitle);
         EL.enter.appendChild(EL.eDesc);
+        EL.enter.appendChild(EL.eImg);
         EL.enter.appendChild(EL.eStartBtn);
 
         this.container.appendChild(EL.enter);

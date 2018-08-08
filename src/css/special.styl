@@ -69,17 +69,20 @@
             right 29px
         
         &__img
-            position absolute
-            bottom -65px
-            right -170px
+            display block
+            max-width 100%
+            margin-top 18px
             
             @media $mq.not_mobile
+                position absolute
                 top 173px
                 bottom auto
                 right 44px
+                margin-top 0
 
         &__title
             position relative
+            z-index 1
             font-size 36px
             font-weight 700
             
@@ -88,6 +91,7 @@
         
         &__desc
             position relative
+            z-index 1
             width 450px
             max-width 100%
             margin-top 10px
@@ -100,8 +104,12 @@
 
         &__start-btn
             position relative
+            z-index 1
             width 200px
-            margin-top 20px
+            margin-top 8px
+            
+            @media $mq.iphone6
+                margin-top 20px
             
             @media $mq.not_mobile
                 position absolute
