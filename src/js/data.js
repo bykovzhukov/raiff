@@ -187,6 +187,7 @@ export default {
         img: 'images/cards/12.jpg',
         img2x: 'images/cards/12@2x.jpg',
         isLoupe: true,
+        isDarkLogo: true,
         holder: 'Anatoly Wasserman',
         correct: 'Да, это карта Вассермана.',
         incorrect: 'Нет, это карта Анатолия Вассермана, который красоте предпочитает практичность.',

@@ -70,10 +70,13 @@ class Special extends BaseSpecial {
     createQuestion() {
         EL.question = makeElement('div', CSS.main + '-question');
 
+        EL.qPages = makeElement('div', CSS.main + '-question__pages');
+
         EL.qCard = makeElement('div', [CSS.main + '-question__card', CSS.main + '-card']);
         EL.qCardImg = makeElement('img', CSS.main + '-card__img');
         EL.qCardLoupe = makeElement('img', CSS.main + '-card__loupe', {
-            src: 'images/cards/loupe.jpg',
+            src: 'images/cards/loupe.png',
+            srcset: 'images/cards/loupe@2x.png',
             style: 'display: none;'
         });
         EL.qCardLogo = makeElement('a', CSS.main + '-card__logo', {
@@ -179,6 +182,9 @@ class Special extends BaseSpecial {
     makeNextQuestion() {
         let question = Data.questions[this.activeIndex];
 
+        EL.qPages.innerHTML = (this.activeIndex + 1) + '<span>/</span>' + Data.questions.length;
+        EL.question.appendChild(EL.qPages);
+
         question.isHiddenLogo ? EL.qCardLogo.style.display = 'none' : EL.qCardLogo.style.display = 'block';
         question.isLoupe ? EL.qCardLoupe.style.display = 'block' : EL.qCardLoupe.style.display = 'none';
 
@@ -188,6 +194,7 @@ class Special extends BaseSpecial {
         EL.qCardHolder.textContent = '';
 
         question.isDark ? EL.qCard.classList.add('is-dark') : EL.qCard.classList.remove('is-dark');
+        question.isDarkLogo ? EL.qCard.classList.add('is-dark-logo') : EL.qCard.classList.remove('is-dark-logo');
         this.makeOptions(question.options);
 
         EL.qCard.style.opacity = 0;
@@ -221,6 +228,8 @@ class Special extends BaseSpecial {
     makeAnswer(el) {
         let id = el.dataset.id,
             question = Data.questions[this.activeIndex];
+
+        EL.question.removeChild(EL.qPages);
 
         EL.qCardHolder.textContent = question.holder;
 

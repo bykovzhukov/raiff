@@ -145,7 +145,27 @@
         
         &--answer
             transform translate3d(0,-20px,0)
-        
+            
+        &__pages
+            position absolute
+            top 8px
+            left 0
+            right 0
+            color #C4C4C4
+            font-family 'Credit Card', 'Roboto', sans-serif
+            font-size 12px
+            letter-spacing .1em
+            text-align center
+            text-transform uppercase
+            user-select none
+            
+            & span
+                font-size 21px
+                
+            @media $mq.not_mobile
+                top 28px
+                font-size 14px
+
         &__options
             display flex
             flex-wrap wrap
@@ -251,9 +271,10 @@
         
         &__loupe
             position absolute
-            top 17.6%
-            right 100%
-            width 20.1%
+            z-index 1
+            top 14.5%
+            width 29.4%
+            left -23%
         
         &__logo
             position absolute
@@ -263,6 +284,7 @@
             color #fff
             
             .is-dark &
+            .is-dark-logo &
                 color #000
                 
             & svg
@@ -414,7 +436,12 @@
             @media $mq.not_mobile
                 position absolute
                 top 48px
+                right 40px
+                width 235px
+            
+            @media $mq.desktop
                 right 90px
+                width 357px
             
 .likely
 
