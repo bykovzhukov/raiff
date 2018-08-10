@@ -1,6 +1,6 @@
 export default {
     title: 'Угадайте, чья это карта',
-    description: '<p>Мы зашифровали 12 личностей в 12 дизайнов карт. Попробуйте угадать, кому они могли бы принадлежать.</p>',
+    description: '<p>Мы зашифровали 12 личностей в 12 дизайнах карт. Попробуйте угадать, кому они могли бы принадлежать.</p>',
     link: 'https://www.raiffeisen.ru/',
     tryLink: 'https://www.raiffeisen.ru/retail/cards/debit/new/request_auth/?card=CS0200-VS06',
     questions: [{
