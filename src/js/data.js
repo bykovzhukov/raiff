@@ -169,6 +169,9 @@ export default {
     }, {
         img: 'images/cards/11.jpg',
         img2x: 'images/cards/11@2x.jpg',
+        imgR: 'images/cards/11.2.jpg',
+        imgR2x: 'images/cards/11.2@2x.jpg',
+        isReplaceCard: true,
         isDark: true,
         holder: 'Banksy',
         correct: 'Да, это карта Бэнкси. А купюра с принцессой Дианой — одна из его нашумевших работ.',

@@ -182,7 +182,16 @@ class Special extends BaseSpecial {
             let img = document.createElement('img');
             img.src = item.img;
             img.srcset = item.img2x + ' 2x';
-            IMAGES[i] = img;
+
+            IMAGES[i] = { 'img': img };
+
+            if (item.isReplaceCard) {
+                let imgR = document.createElement('img');
+                imgR.src = item.imgR;
+                imgR.srcset = item.imgR2x + ' 2x';
+
+                IMAGES[i]['imgR'] = imgR;
+            }
         });
     }
 
@@ -236,6 +245,11 @@ class Special extends BaseSpecial {
             question = Data.questions[this.activeIndex];
 
         EL.question.removeChild(EL.qPages);
+
+        if (question.isReplaceCard) {
+            EL.qCardImg.src = question.imgR;
+            EL.qCardImg.srcset = question.imgR2x + ' 2x';
+        }
 
         EL.qCardHolder.textContent = question.holder;
 
