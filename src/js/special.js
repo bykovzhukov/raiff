@@ -16,6 +16,16 @@ const CSS = {
 const EL = {};
 const IMAGES = {};
 
+function pluralize(number, words) {
+    if (number % 10 == 1 && number % 100 != 11) {
+        return words[0];
+    } else if ([2, 3, 4].indexOf(number % 10) > -1 && [12, 13, 14].indexOf(number % 100) < 0) {
+        return words[1];
+    } else {
+        return words[2];
+    }
+}
+
 class Special extends BaseSpecial {
     constructor(params = {}) {
         super();
@@ -280,7 +290,8 @@ class Special extends BaseSpecial {
         removeChildren(this.container);
         this.container.appendChild(EL.result);
 
-        EL.rText.innerHTML = 'Я расшифровал<br>' + this.correctAnswers + ' личностей из ' + Data.questions.length;
+        let word = pluralize(this.correctAnswers, ['личность', 'личности', 'личностей']);
+        EL.rText.innerHTML = 'Я расшифровал<br>' + this.correctAnswers + ' ' + word + ' из ' + Data.questions.length;
         EL.rImg.src = 'images/result/jobs/' + (this.correctAnswers || 1) + '.jpg';
         EL.rImg.srcset = 'images/result/jobs/' + (this.correctAnswers || 1) + '@2x.jpg 2x';
 
