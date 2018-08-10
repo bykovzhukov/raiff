@@ -286,8 +286,8 @@ class Special extends BaseSpecial {
 
         removeChildren(EL.rShare);
         Share.make(EL.rShare, {
-            title: 'Я угадал<br>' + this.correctAnswers + '/' + Data.questions.length + ' личностей',
-            twitter: 'Я угадал<br>' + this.correctAnswers + '/' + Data.questions.length + ' личностей'
+            title: 'Я расшифровал ' + this.correctAnswers + ' личностей из ' + Data.questions.length,
+            twitter: 'Я расшифровал ' + this.correctAnswers + ' личностей из ' + Data.questions.length
         });
     }
 
