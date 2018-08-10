@@ -280,7 +280,7 @@ class Special extends BaseSpecial {
         removeChildren(this.container);
         this.container.appendChild(EL.result);
 
-        EL.rText.innerHTML = 'Вы угадали<br>' + this.correctAnswers + '/' + Data.questions.length + ' личностей';
+        EL.rText.innerHTML = 'Я расшифровал<br>' + this.correctAnswers + ' личностей из ' + Data.questions.length;
         EL.rImg.src = 'images/result/jobs/' + (this.correctAnswers || 1) + '.jpg';
         EL.rImg.srcset = 'images/result/jobs/' + (this.correctAnswers || 1) + '@2x.jpg 2x';
 
