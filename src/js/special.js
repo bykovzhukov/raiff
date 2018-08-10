@@ -167,16 +167,13 @@ class Special extends BaseSpecial {
         EL.result.appendChild(EL.rBottom);
     }
 
-    storeImage(index, question) {
-        if (IMAGES[index]) {
-            return IMAGES[index];
-        }
-
-        let img = document.createElement('img');
-        img.src = question.img;
-        img.srcset = question.img2x;
-
-        return IMAGES[index] = img;
+    storeImages(data) {
+        data.forEach((item, i) => {
+            let img = document.createElement('img');
+            img.src = item.img;
+            img.srcset = item.img2x + ' 2x';
+            IMAGES[i] = img;
+        });
     }
 
     makeNextQuestion() {
@@ -188,7 +185,6 @@ class Special extends BaseSpecial {
         question.isHiddenLogo ? EL.qCardLogo.style.display = 'none' : EL.qCardLogo.style.display = 'block';
         question.isLoupe ? EL.qCardLoupe.style.display = 'block' : EL.qCardLoupe.style.display = 'none';
 
-        this.storeImage(this.activeIndex, question);
         EL.qCardImg.src = question.img;
         EL.qCardImg.srcset = question.img2x + ' 2x';
         EL.qCardHolder.textContent = '';
@@ -317,6 +313,7 @@ class Special extends BaseSpecial {
     init() {
         removeChildren(this.container);
         this.createEnter();
+        this.storeImages(Data.questions);
 
         EL.wrapper = document.getElementById('raiff-wrapper');
     }
