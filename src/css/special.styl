@@ -18,18 +18,26 @@
         font-size 18px
 
     &-wrapper
+        display flex
+        align-items center
         min-height 100vh
-        padding 20px 0
+        padding-top 60px
+        padding-bottom 10px
+        
+        &::before
+            content ''
+            position absolute
+            top 0
+            left 0
+            width 100%
+            height 50px
+            background-color #feebef
 
         @media $mq.not_mobile
             background-color #F3E737
 
             &--answer
                 background-color #F4F4F4
-
-        @media $mq.desktop
-            // padding 125px 0 75px
-            padding 20px 0 75px
         
     &-container
         padding 0
