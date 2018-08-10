@@ -237,10 +237,10 @@ class Special extends BaseSpecial {
         if (question.options[id].isCorrect) {
             this.correctAnswers++;
             EL.qUserAnswer.classList.add(CSS.main + '-question__user-answer--correct');
-            EL.qAnswer.textContent = question.correct;
+            EL.qAnswer.innerHTML = question.correct;
         } else {
             EL.qUserAnswer.classList.remove(CSS.main + '-question__user-answer--correct');
-            EL.qAnswer.textContent = question.incorrect;
+            EL.qAnswer.innerHTML = question.incorrect;
         }
         EL.question.classList.add(CSS.main + '-question--answer');
         EL.question.removeChild(EL.qOptions);
