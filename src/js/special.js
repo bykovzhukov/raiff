@@ -310,7 +310,7 @@ class Special extends BaseSpecial {
         EL.rImg.srcset = 'images/result/jobs/' + (this.correctAnswers || 1) + '@2x.jpg 2x';
 
         Share.make(EL.rShare, {
-            link: 'https://vc.ru/special/raiffeisen/rusult/' + this.correctAnswers,
+            url: 'https://vc.ru/special/raiffeisen/rusult/' + this.correctAnswers,
             title: 'Я расшифровал ' + this.correctAnswers + ' личностей из ' + Data.questions.length,
             twitter: 'Я расшифровал ' + this.correctAnswers + ' личностей из ' + Data.questions.length
         });
