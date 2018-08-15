@@ -66,13 +66,14 @@
         
         @media $mq.iphone6
             padding 100px 20px 40px
-        
-        @media $mq.not_mobile
-            min-height 600px
-            padding 100px 60px 0
-        
-        @media $mq.desktop
-            padding-top 155px
+
+        .is-single &
+            @media $mq.not_mobile
+                min-height 600px
+                padding 100px 60px 0
+            
+            @media $mq.desktop
+                padding-top 155px
         
         &__logo
             position absolute
@@ -85,22 +86,23 @@
             max-width 100%
             margin-top 18px
             
-            @media $mq.not_mobile
-                position absolute
-                bottom 70px
-                right 0
-                width 300px
-                max-width 100%
-                margin-top 0
-            
-            @media $mq.desktop
-                top 173px
-                bottom auto
-                right 0
-                width auto
-            
-            @media (min-width 1340px)
-                right 44px
+            .is-single &
+                @media $mq.not_mobile
+                    position absolute
+                    bottom 70px
+                    right 0
+                    width 300px
+                    max-width 100%
+                    margin-top 0
+                
+                @media $mq.desktop
+                    top 173px
+                    bottom auto
+                    right 0
+                    width auto
+                
+                @media (min-width 1340px)
+                    right 44px
 
         &__title
             position relative
@@ -108,8 +110,9 @@
             font-size 36px
             font-weight 700
             
-            @media $mq.not_mobile
-                font-size 48px
+            .is-single &
+                @media $mq.not_mobile
+                    font-size 48px
         
         &__desc
             position relative
@@ -120,12 +123,13 @@
             font-size 18px
             line-height 1.4em
             
-            @media $mq.not_mobile
-                margin-top 34px
-                font-size 24px
-            
-            @media $mq.desktop
-                margin-top 47px
+            .is-single &
+                @media $mq.not_mobile
+                    margin-top 34px
+                    font-size 24px
+                
+                @media $mq.desktop
+                    margin-top 47px
 
         &__start-btn
             position relative
@@ -136,10 +140,11 @@
             @media $mq.iphone6
                 margin-top 20px
             
-            @media $mq.not_mobile
-                position absolute
-                bottom 85px
-                margin-top 0px
+            .is-single &
+                @media $mq.not_mobile
+                    position absolute
+                    bottom 85px
+                    margin-top 0px
     
     &-question
         position relative
@@ -154,9 +159,10 @@
             width 540px
             padding 35px 20px 10px
         
-        @media $mq.not_mobile
-            min-height 600px
-            padding 65px 20px 50px
+        .is-single &
+            @media $mq.not_mobile
+                min-height 600px
+                padding 65px 20px 50px
         
         &--answer
             transform translate3d(0,-20px,0)
@@ -177,9 +183,10 @@
             & span
                 font-size 21px
                 
-            @media $mq.not_mobile
-                top 28px
-                font-size 14px
+            .is-single &
+                @media $mq.not_mobile
+                    top 28px
+                    font-size 14px
 
         &__options
             display flex
@@ -187,15 +194,17 @@
             margin -15px 0 0 -15px
             padding-top 30px
             
-            @media $mq.not_mobile
-                margin -15px 0 0 -20px
+            .is-single &
+                @media $mq.not_mobile
+                    margin -15px 0 0 -20px
         
         &__options-item
             width 50%
             padding 15px 0 0 15px
             
-            @media $mq.not_mobile
-                padding 15px 0 0 20px
+            .is-single &
+                @media $mq.not_mobile
+                    padding 15px 0 0 20px
         
         &__option
             width 100%
@@ -224,8 +233,9 @@
             &--correct
                 color #33A860
                 
-            @media $mq.not_mobile
-                margin-top 21px
+            .is-single &
+                @media $mq.not_mobile
+                    margin-top 21px
         
         &__answer
             margin-top 18px
@@ -240,11 +250,12 @@
                     color #cd192e
                     border-bottom 1px solid #f6b4bc
             
-            @media $mq.not_mobile
-                margin-top 21px
-                font-size 16px
-                // line-height 1.85em
-                line-height 1.5em
+            .is-single &
+                @media $mq.not_mobile
+                    margin-top 21px
+                    font-size 16px
+                    // line-height 1.85em
+                    line-height 1.5em
         
         &__next-btn
             position relative
@@ -263,11 +274,12 @@
             &:hover
                 opacity .6
                 
-            @media $mq.not_mobile
-                position absolute
-                // bottom 25px
-                bottom 20px
-                margin-top 0
+            .is-single &
+                @media $mq.not_mobile
+                    position absolute
+                    // bottom 25px
+                    bottom 20px
+                    margin-top 0
     
     &-card
         position relative
@@ -339,9 +351,10 @@
             @media $mq.iphone6
                 padding 20px
             
-            @media $mq.not_mobile
-                min-height 335px
-                padding 50px 60px 70px
+            .is-single &
+                @media $mq.not_mobile
+                    min-height 335px
+                    padding 50px 60px 70px
         
         &__bottom
             position relative
@@ -354,10 +367,11 @@
             @media $mq.iphone6
                 padding 20px
             
-            @media $mq.not_mobile
-                min-height 335px
-                padding 42px 60px 0
-                border-color #F3E737
+            .is-single &
+                @media $mq.not_mobile
+                    min-height 335px
+                    padding 42px 60px 0
+                    border-color #F3E737
         
         &__img
             position absolute
@@ -368,11 +382,12 @@
             @media $mq.iphone6
                 right -10px
             
-            @media $mq.not_mobile
-                width auto
+            .is-single &
+                @media $mq.not_mobile
+                    width auto
 
-            @media $mq.desktop
-                right 118px
+                @media $mq.desktop
+                    right 118px
             
         &__text
             position relative
@@ -383,9 +398,10 @@
             @media $mq.iphone6
                 font-size 27px
             
-            @media $mq.not_mobile
-                font-size 36px
-                line-height 1.45em
+            .is-single &
+                @media $mq.not_mobile
+                    font-size 36px
+                    line-height 1.45em
         
         &__share
             position relative
@@ -408,10 +424,11 @@
             &:hover
                 opacity 1
                 
-            @media $mq.not_mobile
-                position absolute
-                bottom 44px
-                margin-top 0
+            .is-single &
+                @media $mq.not_mobile
+                    position absolute
+                    bottom 44px
+                    margin-top 0
             
         &__title
             width 290px
@@ -422,10 +439,11 @@
             font-weight 700
             line-height 1.2em
             
-            @media $mq.not_mobile
-                margin-top 0
-                font-size 24px
-                line-height 1.45em
+            .is-single &
+                @media $mq.not_mobile
+                    margin-top 0
+                    font-size 24px
+                    line-height 1.45em
             
         &__try-btn
             display block
@@ -433,8 +451,9 @@
             max-width 100%
             margin-top 18px
             
-            @media $mq.not_mobile
-                margin-top 20px
+            .is-single &
+                @media $mq.not_mobile
+                    margin-top 20px
         
         &__note
             position relative
@@ -450,24 +469,26 @@
                 top -2px
                 left -10px
             
-            @media $mq.not_mobile
-                margin-top 43px
-                line-height 1.75em
+            .is-single &
+                @media $mq.not_mobile
+                    margin-top 43px
+                    line-height 1.75em
             
         &__card
             position relative
             width 357px
             max-width 100%
             
-            @media $mq.not_mobile
-                position absolute
-                top 48px
-                right 40px
-                width 235px
-            
-            @media $mq.desktop
-                right 90px
-                width 357px
+            .is-single &
+                @media $mq.not_mobile
+                    position absolute
+                    top 48px
+                    right 40px
+                    width 235px
+                
+                @media $mq.desktop
+                    right 90px
+                    width 357px
             
 .likely
 
@@ -490,15 +511,17 @@
             &:not(:last-child)
                 margin-right 10px
             
-        @media $mq.not_mobile
-            &--facebook
-                padding: 0 15px 0 10px
+        .is-single &
+            @media $mq.not_mobile
+                &--facebook
+                    padding: 0 15px 0 10px
     
     &__button--facebook
         display none
         
-        @media $mq.not_mobile
-            display block
+        .is-single &
+            @media $mq.not_mobile
+                display block
 
     &__icon
         background-color transparent
@@ -514,8 +537,9 @@
 
         &--facebook
 
-            @media $mq.not_mobile
-                margin-right 6px
+            .is-single &
+                @media $mq.not_mobile
+                    margin-right 6px
 
 
 
