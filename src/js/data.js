@@ -191,7 +191,7 @@ export default {
         img2x: 'images/cards/12@2x.jpg',
         isLoupe: true,
         isDarkLogo: true,
-        holder: 'Anatoly Wasserman',
+        holder: 'Anatoly Vasserman',
         correct: 'Да, это карта Вассермана — большого любителя носить с собой в жилетке инструменты на все случаи жизни.',
         incorrect: 'Нет, это карта Анатолия Вассермана — большого любителя носить с собой в жилетке инструменты на все случаи жизни.',
         options: [{
