@@ -35,7 +35,10 @@
             if (container) {
                 s.onload = function() {
                     var special = new Raiff.Special({
-                        container: container
+                        container: container,
+                        path: '',
+                        articleLink: '',
+                        isFeed: false
                     });
                 };
             }

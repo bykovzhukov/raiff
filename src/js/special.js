@@ -52,11 +52,12 @@ class Special extends BaseSpecial {
             innerHTML: Svg.logo
         });
         EL.eImg = makeElement('img', CSS.main + '-enter__img', {
-            src: 'images/enter.jpg',
-            srcset: 'images/enter@2x.jpg 2x'
+            src: this.params.path + 'images/enter.jpg',
+            srcset: this.params.path + 'images/enter@2x.jpg 2x'
         });
+        this.params.articleLink = this.params.articleLink || '#';
         EL.eTitle = makeElement('div', CSS.main + '-enter__title', {
-            textContent: Data.title
+            innerHTML: '<a href="' + this.params.articleLink + '">' + Data.title + '</a>'
         });
         EL.eDesc = makeElement('div', CSS.main + '-enter__desc', {
             innerHTML: Data.description
@@ -85,8 +86,8 @@ class Special extends BaseSpecial {
         EL.qCard = makeElement('div', [CSS.main + '-question__card', CSS.main + '-card']);
         EL.qCardImg = makeElement('img', CSS.main + '-card__img');
         EL.qCardLoupe = makeElement('img', CSS.main + '-card__loupe', {
-            src: 'images/cards/loupe.png',
-            srcset: 'images/cards/loupe@2x.png',
+            src: this.params.path + 'images/cards/loupe.png',
+            srcset: this.params.path + 'images/cards/loupe@2x.png',
             style: 'display: none;'
         });
         EL.qCardLogo = makeElement('a', CSS.main + '-card__logo', {
@@ -140,8 +141,8 @@ class Special extends BaseSpecial {
 
         EL.rCard = makeElement('div', [CSS.main + '-result__card', CSS.main + '-card']);
         EL.rCardImg = makeElement('img', CSS.main + '-card__img', {
-            src: 'images/result/card.jpg',
-            srcset: 'images/result/card@2x.jpg 2x'
+            src: this.params.path + 'images/result/card.jpg',
+            srcset: this.params.path + 'images/result/card@2x.jpg 2x'
         });
         EL.rCardLogo = makeElement('a', CSS.main + '-card__logo', {
             href: Data.link,
@@ -180,15 +181,15 @@ class Special extends BaseSpecial {
     storeImages(data) {
         data.forEach((item, i) => {
             let img = document.createElement('img');
-            img.src = item.img;
-            img.srcset = item.img2x + ' 2x';
+            img.src = this.params.path + item.img;
+            img.srcset = this.params.path + item.img2x + ' 2x';
 
             IMAGES[i] = { 'img': img };
 
             if (item.isReplaceCard) {
                 let imgR = document.createElement('img');
-                imgR.src = item.imgR;
-                imgR.srcset = item.imgR2x + ' 2x';
+                imgR.src = this.params.path + item.imgR;
+                imgR.srcset = this.params.path + item.imgR2x + ' 2x';
 
                 IMAGES[i]['imgR'] = imgR;
             }
@@ -204,8 +205,8 @@ class Special extends BaseSpecial {
         question.isHiddenLogo ? EL.qCardLogo.style.display = 'none' : EL.qCardLogo.style.display = 'block';
         question.isLoupe ? EL.qCardLoupe.style.display = 'block' : EL.qCardLoupe.style.display = 'none';
 
-        EL.qCardImg.src = question.img;
-        EL.qCardImg.srcset = question.img2x + ' 2x';
+        EL.qCardImg.src = this.params.path + question.img;
+        EL.qCardImg.srcset = this.params.path + question.img2x + ' 2x';
         EL.qCardHolder.textContent = '';
 
         question.isDark ? EL.qCard.classList.add('is-dark') : EL.qCard.classList.remove('is-dark');
@@ -247,8 +248,8 @@ class Special extends BaseSpecial {
         EL.question.removeChild(EL.qPages);
 
         if (question.isReplaceCard) {
-            EL.qCardImg.src = question.imgR;
-            EL.qCardImg.srcset = question.imgR2x + ' 2x';
+            EL.qCardImg.src = this.params.path + question.imgR;
+            EL.qCardImg.srcset = this.params.path + question.imgR2x + ' 2x';
         }
 
         EL.qCardHolder.textContent = question.holder;
@@ -276,7 +277,9 @@ class Special extends BaseSpecial {
     }
 
     start() {
-        EL.wrapper.classList.add(CSS.main + '-wrapper--answer');
+        if (!this.params.isFeed) {
+            document.body.classList.add(CSS.main + '-body--testing');
+        }
 
         removeChildren(this.container);
         this.createQuestion();
@@ -300,14 +303,17 @@ class Special extends BaseSpecial {
     }
 
     showResult() {
-        EL.wrapper.classList.remove(CSS.main + '-wrapper--answer');
+        if (!this.params.isFeed) {
+            document.body.classList.remove(CSS.main + '-body--testing');
+        }
+
         removeChildren(this.container);
         this.container.appendChild(EL.result);
 
         let word = pluralize(this.correctAnswers, ['личность', 'личности', 'личностей']);
         EL.rText.innerHTML = 'Я расшифровал<br>' + this.correctAnswers + ' ' + word + ' из ' + Data.questions.length;
-        EL.rImg.src = 'images/result/jobs/' + (this.correctAnswers || 1) + '.jpg';
-        EL.rImg.srcset = 'images/result/jobs/' + (this.correctAnswers || 1) + '@2x.jpg 2x';
+        EL.rImg.src = this.params.path + 'images/result/jobs/' + (this.correctAnswers || 1) + '.jpg';
+        EL.rImg.srcset = this.params.path + 'images/result/jobs/' + (this.correctAnswers || 1) + '@2x.jpg 2x';
 
         Share.make(EL.rShare, {
             url: 'https://vc.ru/special/raiffeisen/rusult/' + this.correctAnswers,
@@ -317,7 +323,10 @@ class Special extends BaseSpecial {
     }
 
     restart() {
-        EL.wrapper.classList.add(CSS.main + '-wrapper--answer');
+        if (!this.params.isFeed) {
+            document.body.classList.add(CSS.main + '-body--testing');
+        }
+
         removeChildren(this.container);
         this.container.appendChild(EL.question);
         EL.question.classList.remove(CSS.main + '-question--answer');
@@ -336,11 +345,16 @@ class Special extends BaseSpecial {
     }
 
     init() {
+        if (!this.params.isFeed) {
+            document.body.classList.add(CSS.main + '-body');
+            this.container.classList.add('is-single');
+        }
+        this.params.path = this.params.path || '';
         removeChildren(this.container);
         this.createEnter();
         this.storeImages(Data.questions);
 
-        EL.wrapper = document.getElementById('raiff-wrapper');
+        // EL.wrapper = document.getElementById('raiff-wrapper');
     }
 }
 
