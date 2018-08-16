@@ -320,9 +320,9 @@ class Special extends BaseSpecial {
         EL.rImg.srcset = this.params.path + 'images/result/jobs/' + (this.correctAnswers || 1) + '@2x.jpg 2x';
 
         Share.make(EL.rShare, {
-            url: 'https://vc.ru/special/raiffeisen/rusult/' + this.correctAnswers,
-            title: 'Я расшифровал ' + this.correctAnswers + ' личностей из ' + Data.questions.length,
-            twitter: 'Я расшифровал ' + this.correctAnswers + ' личностей из ' + Data.questions.length
+            url: this.params.share.url + this.correctAnswers,
+            title: this.params.share.title,
+            twitter: this.params.share.twitter
         });
 
         Analytics.sendEvent('Result — ' + this.correctAnswers, 'Hit');
