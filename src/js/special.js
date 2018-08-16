@@ -319,6 +319,7 @@ class Special extends BaseSpecial {
         EL.rImg.src = this.params.path + 'images/result/jobs/' + (this.correctAnswers || 1) + '.jpg';
         EL.rImg.srcset = this.params.path + 'images/result/jobs/' + (this.correctAnswers || 1) + '@2x.jpg 2x';
 
+        removeChildren(EL.rShare);
         Share.make(EL.rShare, {
             url: this.params.share.url + this.correctAnswers,
             title: this.params.share.title,
