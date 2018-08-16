@@ -128,7 +128,7 @@ class Special extends BaseSpecial {
         EL.result = makeElement('div', CSS.main + '-result');
         EL.rHead = makeElement('div', CSS.main + '-result__head');
         EL.rBottom = makeElement('div', CSS.main + '-result__bottom');
-        
+
         EL.rImg = makeElement('img', CSS.main + '-result__img');
         EL.rText = makeElement('div', CSS.main + '-result__text');
         EL.rShare = makeElement('div', CSS.main + '-result__share');
@@ -289,6 +289,8 @@ class Special extends BaseSpecial {
 
         this.setInitialParams();
         this.makeNextQuestion();
+
+        Analytics.sendEvent('Start');
     }
 
     continue() {
@@ -300,6 +302,8 @@ class Special extends BaseSpecial {
         EL.question.removeChild(EL.qNextBtn);
         EL.question.appendChild(EL.qOptions);
         this.makeNextQuestion();
+
+        Analytics.sendEvent('Question — ' + (this.activeIndex + 1), 'Hit');
     }
 
     showResult() {
@@ -316,10 +320,12 @@ class Special extends BaseSpecial {
         EL.rImg.srcset = this.params.path + 'images/result/jobs/' + (this.correctAnswers || 1) + '@2x.jpg 2x';
 
         Share.make(EL.rShare, {
-            url: 'https://vc.ru/special/raiffeisen/rusult/' + this.correctAnswers,
-            title: 'Я расшифровал ' + this.correctAnswers + ' личностей из ' + Data.questions.length,
-            twitter: 'Я расшифровал ' + this.correctAnswers + ' личностей из ' + Data.questions.length
+            url: this.params.share.url + this.correctAnswers,
+            title: this.params.share.title,
+            twitter: this.params.share.twitter
         });
+
+        Analytics.sendEvent('Result — ' + this.correctAnswers, 'Hit');
     }
 
     restart() {
@@ -337,6 +343,8 @@ class Special extends BaseSpecial {
 
         this.setInitialParams();
         this.makeNextQuestion();
+
+        Analytics.sendEvent('Restart');
     }
 
     setInitialParams() {
