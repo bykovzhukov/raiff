@@ -358,12 +358,11 @@ class Special extends BaseSpecial {
             document.body.classList.add(CSS.main + '-body');
             this.container.classList.add('is-single');
         }
+
         this.params.path = this.params.path || '';
         removeChildren(this.container);
         this.createEnter();
         this.storeImages(Data.questions);
-
-        // EL.wrapper = document.getElementById('raiff-wrapper');
     }
 }
 
