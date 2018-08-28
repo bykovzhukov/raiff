@@ -6,7 +6,7 @@
 @import 'keyframes'
 
 // base.styl подключается только в том случае, когда спецпроект расположен на отдельной странице
-@import 'base'
+// @import 'base'
 
 .Raiff
     position relative
@@ -513,6 +513,18 @@
             @media $mq.not_mobile
                 margin-top 43px
                 line-height 1.75em
+        
+        &__license
+            position relative
+            max-width 410px
+            margin-top 8px
+            color #fff
+            font-size 10px
+            line-height 1.2em
+
+            @media $mq.not_mobile
+                margin-top 16px
+                line-height 1.75em
 
         &__card
             position relative
@@ -529,51 +541,69 @@
                 @media $mq.desktop
                     right 90px
                     width 357px
+                    
+    .likely
+        &--custom
+            display: flex
 
-.likely
+        &__widget
+            flex-shrink: 0
+            display: flex
+            align-items: center
+            justify-content: center
+            cursor: pointer
 
-    &__widget
-        min-width 58px
-        height 44px
-        color #808080
-        border 2px solid  #BFBFBF
-        background-color #fff
+        &__counter
+            display: none
 
-        &:not(:last-child)
-            margin-right 5px
+        &__icon
+            svg
+                display: block
 
-        &:hover
-            color #fff
-            border-color #808080
-            background-color #808080
+    .likely
 
-        @media $mq.iphone6
+        &__widget
+            min-width 58px
+            height 44px
+            color #808080
+            border 2px solid  #BFBFBF
+            background-color #fff
+
             &:not(:last-child)
-                margin-right 10px
+                margin-right 5px
 
-        @media $mq.not_mobile
-            &--facebook
-                padding: 0 15px 0 10px
+            &:hover
+                color #fff
+                border-color #808080
+                background-color #808080
 
-    &__button--facebook
-        display none
-
-        @media $mq.not_mobile
-            display block
-
-    &__icon
-        background-color transparent
-
-        & svg
-            width: 24px
-            height: @width
-
-        &--vkontakte
-            & svg
-                width: 28px
-                height: @width
-
-        &--facebook
+            @media $mq.iphone6
+                &:not(:last-child)
+                    margin-right 10px
 
             @media $mq.not_mobile
-                margin-right 6px
+                &--facebook
+                    padding: 0 15px 0 10px
+
+        &__button--facebook
+            display none
+
+            @media $mq.not_mobile
+                display block
+
+        &__icon
+            background-color transparent
+
+            & svg
+                width: 24px
+                height: @width
+
+            &--vkontakte
+                & svg
+                    width: 28px
+                    height: @width
+
+            &--facebook
+
+                @media $mq.not_mobile
+                    margin-right 6px

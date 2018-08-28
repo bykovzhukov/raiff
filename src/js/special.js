@@ -161,6 +161,10 @@ class Special extends BaseSpecial {
             textContent: 'Правила международных платежных систем запрещают использовать в дизайне надписи, цифры и изображения денежных купюр.'
         });
 
+        EL.rLicense = makeElement('div', CSS.main + '-result__license', {
+            textContent: 'АО «Райффайзенбанк», Генеральная лицензия Банка России № 3292, от 17.02.2015'
+        });
+
         EL.rCard.appendChild(EL.rCardImg);
         EL.rCard.appendChild(EL.rCardLogo);
 
@@ -173,6 +177,7 @@ class Special extends BaseSpecial {
         EL.rBottom.appendChild(EL.rTitle);
         EL.rBottom.appendChild(EL.rLink);
         EL.rBottom.appendChild(EL.rNote);
+        EL.rBottom.appendChild(EL.rLicense);
 
         EL.result.appendChild(EL.rHead);
         EL.result.appendChild(EL.rBottom);
